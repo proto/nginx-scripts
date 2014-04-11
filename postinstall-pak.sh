@@ -45,7 +45,7 @@ if [ -d "/usr/share/doc/nginx" ]; then
         rm -rf /usr/share/doc/nginx
 fi
 
-cp /usr/local/share/doc/nginx/system_scripts/system.etc.init.d.nginx /etc/init.d/nginx
+cp /usr/local/share/doc/nginx/system_scripts/system.init.d.nginx /etc/init.d/nginx
 chown root:root /etc/init.d/nginx
 chmod 750 /etc/init.d/nginx
 
