@@ -45,11 +45,11 @@ if [ -d "/usr/share/doc/nginx" ]; then
         rm -rf /usr/share/doc/nginx
 fi
 
-cp /usr/local/share/doc/nginx/scripts/init.script /etc/init.d/nginx
+cp /usr/local/share/doc/nginx/system_scripts/system.etc.init.d.nginx /etc/init.d/nginx
 chown root:root /etc/init.d/nginx
 chmod 750 /etc/init.d/nginx
 
-cp /usr/local/share/doc/nginx/scripts/init.default.script /etc/default/nginx
+cp /usr/local/share/doc/nginx/system_scripts/system.etc.default.nginx /etc/default/nginx
 chown root:root /etc/default/nginx
 
 addlogdir
