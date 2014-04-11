@@ -1,8 +1,8 @@
 #!/bin/bash
 
-PAK-DIR=$1
+PAKDIR=$1
 
-if [ ! "$1" ]; then
+if [ ! "$PAKDIR" ]; then
     echo "Select TARGET dir, FULL PATH!"
     exit 1
 fi
