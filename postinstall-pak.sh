@@ -38,22 +38,36 @@ addcachedir() {
     mkdir -p /var/cache/nginx/{client_temp,proxy_temp,fastcgi_temp,uwsgi_temp,scgi_temp}
 }
 
+addinitscript() {
+    if [ -d "/usr/share/doc/nginx" ]; then
+            mkdir -p /usr/local/share/doc/nginx
+            cp -a /usr/share/doc/nginx /usr/local/share/doc/
+            rm -rf /usr/share/doc/nginx
+    fi
 
-if [ -d "/usr/share/doc/nginx" ]; then
-        mkdir -p /usr/local/share/doc/nginx
-        cp -a /usr/share/doc/nginx /usr/local/share/doc/
-        rm -rf /usr/share/doc/nginx
-fi
+    cp /usr/local/share/doc/nginx/system_scripts/system.init.d.nginx /etc/init.d/nginx
+    chown root:root /etc/init.d/nginx
+    chmod 750 /etc/init.d/nginx
 
-cp /usr/local/share/doc/nginx/system_scripts/system.init.d.nginx /etc/init.d/nginx
-chown root:root /etc/init.d/nginx
-chmod 750 /etc/init.d/nginx
+    cp /usr/local/share/doc/nginx/system_scripts/system.etc.default.nginx /etc/default/nginx
+    chown root:root /etc/default/nginx
+}
 
-cp /usr/local/share/doc/nginx/system_scripts/system.etc.default.nginx /etc/default/nginx
-chown root:root /etc/default/nginx
+addconf() {
+    if [ -d "/usr/local/etc/nginx/" ]; then
+        cp -a /usr/local/etc/nginx/ /usr/local/etc/nginx.default
+        cp -a /usr/local/share/doc/conf/* /usr/local/etc/nginx/
+        rm -rf /usr/local/etc/nginx.default
+        rm /usr/local/etc/nginx/conf.d/.removemeafterdeploy
+        rm /usr/local/etc/nginx/sites-enabled/.removemeafterdeploy
+        ln -s /usr/local/etc/nginx/sites-available/default.conf /usr/local/etc/nginx/sites-enabled/default.conf
+    fi
+}
 
 addlogdir
 addcachedir
+addinitscript
+addconf
 
 cat <<BANNER
 ----------------------------------------------------------------------
