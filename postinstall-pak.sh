@@ -56,7 +56,7 @@ addinitscript() {
 addconf() {
     if [ -d "/usr/local/etc/nginx/" ]; then
         cp -a /usr/local/etc/nginx/ /usr/local/etc/nginx.default
-        cp -a /usr/local/share/doc/conf/* /usr/local/etc/nginx/
+        cp -a /usr/local/share/doc/nginx/conf/* /usr/local/etc/nginx/
         rm -rf /usr/local/etc/nginx.default
         rm /usr/local/etc/nginx/conf.d/.removemeafterdeploy
         rm /usr/local/etc/nginx/sites-enabled/.removemeafterdeploy
