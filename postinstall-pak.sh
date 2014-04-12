@@ -35,7 +35,7 @@ addlogdir() {
 
 addcachedir() {
 # Add cache directories
-    mkdir -p /var/cache/nginx/{client_temp,proxy_temp,fastcgi_temp,uwsgi_temp,scgi_temp}
+    mkdir -p /var/cache/nginx/
 }
 
 addinitscript() {
@@ -65,7 +65,7 @@ addconf() {
 }
 
 addlogdir
-#addcachedir
+addcachedir
 addinitscript
 addconf
 
