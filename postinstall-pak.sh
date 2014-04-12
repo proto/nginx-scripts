@@ -65,7 +65,7 @@ addconf() {
 }
 
 addlogdir
-addcachedir
+#addcachedir
 addinitscript
 addconf
 

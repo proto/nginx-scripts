@@ -15,11 +15,16 @@ BUILD System
 
 Linux Ubuntu 12.04 x86_64 / Precise
 
+### Requirements
+
+* checkinstall
+* any -dev libraries required to compile nginx from source
+
 
 CONFIGURATION Options
 ---------------------
 
-Configuration:
+Configuration example:
 
     ./configure \
     --prefix=/usr/local/nginx \
@@ -56,7 +61,6 @@ Configuration:
 
 ### CONFIGURATION Summary
 
-
     Configuration summary
     + using system PCRE library
     + using system OpenSSL library
@@ -78,3 +82,30 @@ Configuration:
     nginx http scgi temporary files: "/var/cache/nginx/scgi_temp"
 
 
+USAGE
+-----
+
+Compile nginx sources in __NGINX_SRC_DIR__:
+
+    ./configure __OPTIONS__
+    make
+
+Clone repository:
+
+    git clone https://github.com/proto/nginx-scripts.git
+
+    cd nginx-scripts
+
+    chmod +x pak-format.sh
+
+    ./pak-format __NGINX_SRC_DIR__
+
+Use checkinstall to compile:
+
+    cd __NGINX_SRC_DIR__
+
+    checkinstall --install=no -D
+
+Install deb pkg:
+
+    dpkg -i __DEB_PKG_NAME__
